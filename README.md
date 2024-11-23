@@ -1,0 +1,2 @@
+# daily-pejoeang
+jangan menyerah 🔥
