@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .login-container, .chat-container {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-container {
+            display: flex;
+        }
+        .login-container input, .chat-footer input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button, .chat-footer button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .chat-messages {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+            width: 100%;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+        }
+        .chat-footer {
+            display: flex;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="login-container" id="loginContainer">
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Your name..." />
+        <button onclick="login()">Click</button>
+    </div>
+
+    <!-- Chat Interface -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <span id="chatHeaderName"></span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message"><strong>Anto:</strong> Halo apa kabar</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="messageInput" placeholder="Reply..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const usernameInput = document.getElementById('usernameInput');
+            const chatHeaderName = document.getElementById('chatHeaderName');
+            const loginContainer = document.getElementById('loginContainer');
+            const chatContainer = document.getElementById('chatContainer');
+
+            const username = usernameInput.value.trim();
+            if (username) {
+                chatHeaderName.textContent = username;
+                loginContainer.style.display = 'none';
+                chatContainer.style.display = 'flex';
+            }
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const messageText = messageInput.value.trim();
+
+            if (messageText) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.innerHTML = `<strong>You:</strong> ${messageText}`;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+                messageInput.value = ''; // Clear input
+            }
+        }
+    </script>
+</body>
+</html>
+
