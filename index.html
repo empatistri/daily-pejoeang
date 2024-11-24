@@ -5,127 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pejoeang Portfolio</title>
     <style>
-        /* Resetting default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Responsive menu toggle */
+    .navbar .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #444;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        border-radius: 5px;
+        overflow: hidden;
+        z-index: 100;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-        }
+    .navbar .menu.active {
+        display: flex;
+    }
 
-        /* Navbar styling */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-        }
+    .navbar .menu a {
+        padding: 15px 20px; /* Tambahkan padding untuk ukuran klik lebih besar */
+        font-size: 1.2em; /* Perbesar ukuran font */
+        text-align: left;
+        border-bottom: 1px solid #555;
+    }
 
-        .navbar .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
+    .navbar .menu a:last-child {
+        border-bottom: none;
+    }
 
-        .navbar .menu {
-            display: flex;
-            gap: 20px;
-        }
+    .navbar .menu a:hover {
+        background-color: #555;
+    }
 
-        .navbar .menu a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1em;
-            transition: color 0.3s;
-        }
+    /* Hamburger toggle button */
+    .navbar .toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 101;
+    }
 
-        .navbar .menu a:hover {
-            color: #00bcd4;
-        }
+    .navbar .toggle span {
+        height: 4px; /* Perbesar tebal garis */
+        width: 30px; /* Perbesar lebar garis */
+        background: #fff;
+        margin: 5px 0; /* Tambahkan jarak antar garis */
+        border-radius: 2px;
+    }
 
-        /* Responsive menu toggle */
+    @media (max-width: 768px) {
         .navbar .toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .navbar .toggle span {
-            height: 3px;
-            width: 25px;
-            background: #fff;
-            margin: 3px 0;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .navbar .menu {
-                display: none;
-                flex-direction: column;
-                background-color: #444;
-                position: absolute;
-                top: 50px;
-                right: 20px;
-                border-radius: 5px;
-                overflow: hidden;
-            }
-
-            .navbar .menu.active {
-                display: flex;
-            }
-
-            .navbar .toggle {
-                display: flex;
-            }
-        }
-
-        /* Content layout */
-        .content {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            margin: 20px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+    }
+</style>
 
-        .content .text {
-            flex: 1;
-            padding: 20px;
-            font-size: 1.2em;
-        }
-
-        .content .image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .content .image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* Responsive content layout */
-        @media (max-width: 768px) {
-            .content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .content .text {
-                padding: 10px 0;
-            }
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar">
